@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
+import styles from "./Nav.module.css";
 
 const Nav = () => {
   const { isAuthenticated, user, logout } = useAuth();
@@ -14,17 +15,16 @@ const Nav = () => {
   };
 
   return (
-    <nav className="navbar" id="main-navbar">
-      <div className="navbar-container container">
+    <nav className={styles.navbar} id="main-navbar">
+      <div className={`${styles.navbarContainer} container`}>
         {/* Logo */}
-        <Link to="/" className="navbar-logo" id="navbar-logo">
-          <span className="logo-icon">◆</span>
-          <span className="logo-text">Amazain</span>
+        <Link to="/" className={styles.navbarLogo} id="navbar-logo">
+          <span>SOUQ</span>
         </Link>
 
         {/* Hamburger for mobile */}
         <button
-          className={`navbar-hamburger ${menuOpen ? "active" : ""}`}
+          className={`${styles.navbarHamburger} ${menuOpen ? styles.active : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle menu"
           id="navbar-hamburger"
@@ -35,21 +35,26 @@ const Nav = () => {
         </button>
 
         {/* Nav Links */}
-        <div className={`navbar-links ${menuOpen ? "open" : ""}`}>
-          <Link to="/" className="nav-link" id="nav-home" onClick={() => setMenuOpen(false)}>
+        <div className={`${styles.navbarLinks} ${menuOpen ? styles.open : ""}`}>
+          <Link
+            to="/"
+            className={styles.navLink}
+            id="nav-home"
+            onClick={() => setMenuOpen(false)}
+          >
             Home
           </Link>
 
           {isAuthenticated ? (
             <>
-              <div className="nav-user-info">
-                <div className="nav-avatar" id="nav-avatar">
+              <div className={styles.navUserInfo}>
+                <div className={styles.navAvatar} id="nav-avatar">
                   {user?.name?.charAt(0).toUpperCase()}
                 </div>
-                <span className="nav-username">{user?.name}</span>
+                <span className={styles.navUsername}>{user?.name}</span>
               </div>
               <button
-                className="nav-btn nav-btn-outline"
+                className={`${styles.navBtn} ${styles.navBtnOutline}`}
                 onClick={handleLogout}
                 id="nav-logout-btn"
               >
@@ -60,7 +65,7 @@ const Nav = () => {
             <>
               <Link
                 to="/login"
-                className="nav-link"
+                className={styles.navLink}
                 id="nav-login"
                 onClick={() => setMenuOpen(false)}
               >
@@ -68,7 +73,7 @@ const Nav = () => {
               </Link>
               <Link
                 to="/register"
-                className="nav-btn nav-btn-primary"
+                className={`${styles.navBtn} ${styles.navBtnPrimary}`}
                 id="nav-register-btn"
                 onClick={() => setMenuOpen(false)}
               >

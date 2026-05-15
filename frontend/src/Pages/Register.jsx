@@ -105,11 +105,8 @@ const Register = () => {
       <div className="auth-container" style={{ animationDelay: "0.1s" }}>
         {/* Header */}
         <div className="auth-header">
-          <div className="auth-logo">
-            <span className="auth-logo-icon">◆</span>
-          </div>
           <h1 className="auth-title" id="register-title">Create Account</h1>
-          <p className="auth-subtitle">Join Amazain and start shopping today</p>
+          <p className="auth-subtitle">Join SOUQ and start shopping today</p>
         </div>
 
         {/* Server Error */}
@@ -128,7 +125,6 @@ const Register = () => {
               Full Name
             </label>
             <div className="input-wrapper">
-              <span className="input-icon">👤</span>
               <input
                 type="text"
                 id="register-name"
@@ -150,7 +146,6 @@ const Register = () => {
               Email Address
             </label>
             <div className="input-wrapper">
-              <span className="input-icon">✉</span>
               <input
                 type="email"
                 id="register-email"
@@ -171,7 +166,6 @@ const Register = () => {
               Password
             </label>
             <div className="input-wrapper">
-              <span className="input-icon">🔒</span>
               <input
                 type={showPassword ? "text" : "password"}
                 id="register-password"
@@ -225,7 +219,6 @@ const Register = () => {
               Confirm Password
             </label>
             <div className="input-wrapper">
-              <span className="input-icon">🔒</span>
               <input
                 type={showConfirmPassword ? "text" : "password"}
                 id="register-confirm-password"

@@ -75,9 +75,6 @@ const Login = () => {
       <div className="auth-container" style={{ animationDelay: "0.1s" }}>
         {/* Header */}
         <div className="auth-header">
-          <div className="auth-logo">
-            <span className="auth-logo-icon">◆</span>
-          </div>
           <h1 className="auth-title" id="login-title">Welcome Back</h1>
           <p className="auth-subtitle">Sign in to continue to your account</p>
         </div>
@@ -98,7 +95,6 @@ const Login = () => {
               Email Address
             </label>
             <div className="input-wrapper">
-              <span className="input-icon">✉</span>
               <input
                 type="email"
                 id="login-email"
@@ -120,7 +116,6 @@ const Login = () => {
               Password
             </label>
             <div className="input-wrapper">
-              <span className="input-icon">🔒</span>
               <input
                 type={showPassword ? "text" : "password"}
                 id="login-password"
