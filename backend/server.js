@@ -1,11 +1,16 @@
 import express from "express";
 import cors from "cors";
 import dotenv from "dotenv";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 import connectDB from "./config/db.js";
 import authRoutes from "./routes/auth.js";
+import productRoutes from "./routes/products.js";
 
-// Load environment variables
-dotenv.config();
+// Load environment variables with explicit path
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+dotenv.config({ path: join(__dirname, ".env") });
 
 // Connect to MongoDB
 connectDB();
@@ -21,6 +26,7 @@ app.use(express.json());
 
 // Routes
 app.use("/api/auth", authRoutes);
+app.use("/api/products", productRoutes);
 
 // Health check
 app.get("/api/health", (req, res) => {
@@ -38,7 +44,7 @@ app.use((err, req, res, next) => {
   res.status(500).json({ message: "Internal server error" });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 app.listen(PORT, () => {
   console.log(` Server running on http://localhost:${PORT}`);

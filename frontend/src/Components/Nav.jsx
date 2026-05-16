@@ -3,7 +3,7 @@ import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import styles from "./Nav.module.css";
 
-const Nav = () => {
+const Nav = ({ cartCount = 0 }) => {
   const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -43,6 +43,24 @@ const Nav = () => {
             onClick={() => setMenuOpen(false)}
           >
             Home
+          </Link>
+
+          <Link
+            to="/products"
+            className={styles.navLink}
+            id="nav-products"
+            onClick={() => setMenuOpen(false)}
+          >
+            Products
+          </Link>
+
+          <Link
+            to="/cart"
+            className={styles.navLink}
+            id="nav-cart"
+            onClick={() => setMenuOpen(false)}
+          >
+            🛒{cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
           </Link>
 
           {isAuthenticated ? (
