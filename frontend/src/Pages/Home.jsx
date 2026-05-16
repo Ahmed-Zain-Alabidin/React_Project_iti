@@ -103,40 +103,7 @@ const Home = () => {
         </section>
       )}
 
-      {/* Footer */}
-      <footer className="footer" id="footer">
-        <div className="container">
-          <div className="footer-content">
-            <div className="footer-brand">
-              <span className="footer-logo">SOUQ</span>
-              <p className="footer-tagline">Premium shopping experience, reimagined.</p>
-            </div>
-            <div className="footer-links">
-              <div className="footer-col">
-                <h4>Shop</h4>
-                <a href="#">New Arrivals</a>
-                <a href="#">Best Sellers</a>
-                <a href="#">Deals</a>
-              </div>
-              <div className="footer-col">
-                <h4>Support</h4>
-                <a href="#">Help Center</a>
-                <a href="#">Returns</a>
-                <a href="#">Contact</a>
-              </div>
-              <div className="footer-col">
-                <h4>Company</h4>
-                <a href="#">About</a>
-                <a href="#">Careers</a>
-                <a href="#">Privacy</a>
-              </div>
-            </div>
-          </div>
-          <div className="footer-bottom">
-            <p>© 2026 SOUQ. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+
     </div>
   );
 };

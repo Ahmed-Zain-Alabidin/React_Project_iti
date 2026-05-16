@@ -270,68 +270,6 @@
   color: var(--color-text-secondary);
 }
 
-/* ── Footer ─────────────────────────────────────── */
-.footer {
-  margin-top: var(--space-3xl);
-  padding: var(--space-3xl) 0 var(--space-xl);
-  border-top: var(--border-glass);
-  background: var(--color-bg-secondary);
-}
-
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--space-3xl);
-  margin-bottom: var(--space-2xl);
-}
-
-.footer-logo {
-  font-size: var(--font-size-xl);
-  font-weight: 700;
-  color: var(--color-text-primary);
-}
-
-.footer-tagline {
-  color: var(--color-text-muted);
-  font-size: var(--font-size-sm);
-  margin-top: var(--space-sm);
-}
-
-.footer-links {
-  display: flex;
-  gap: var(--space-3xl);
-}
-
-.footer-col {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-sm);
-}
-
-.footer-col h4 {
-  font-size: var(--font-size-sm);
-  font-weight: 700;
-  color: var(--color-text-primary);
-  margin-bottom: var(--space-xs);
-}
-
-.footer-col a {
-  font-size: var(--font-size-sm);
-  color: var(--color-text-muted);
-  transition: color var(--transition-fast);
-}
-
-.footer-col a:hover {
-  color: var(--color-primary);
-}
-
-.footer-bottom {
-  text-align: center;
-  padding-top: var(--space-xl);
-  border-top: var(--border-glass);
-  font-size: var(--font-size-xs);
-  color: var(--color-text-muted);
-}
 
 /* ── Keyframes ───────────────────────────────────── */
 @keyframes fadeInUp {
@@ -391,12 +329,5 @@
     font-size: var(--font-size-xs);
   }
 
-  .footer-content {
-    flex-direction: column;
-    gap: var(--space-xl);
-  }
 
-  .footer-links {
-    gap: var(--space-xl);
-  }
 }

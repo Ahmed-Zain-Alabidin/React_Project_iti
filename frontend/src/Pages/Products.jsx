@@ -1,5 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useAuth } from "../context/AuthContext";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../store/cartSlice";
 import API from "../api/axios";
 import ProductCard from "../Components/ProductCard";
 import ProductFormModal from "../Components/ProductFormModal";
@@ -13,7 +15,8 @@ const SORT_OPTIONS = [
   { value: "name_asc", label: "Name: A–Z" },
 ];
 
-const Products = ({ onAddToCart }) => {
+const Products = () => {
+  const dispatch = useDispatch();
   const { user } = useAuth();
   const isAdmin = user?.role === "admin";
 
@@ -188,7 +191,7 @@ const Products = ({ onAddToCart }) => {
                 isAdmin={isAdmin}
                 onEdit={openEdit}
                 onDelete={handleDelete}
-                onAddToCart={onAddToCart}
+                onAddToCart={(product) => dispatch(addToCart(product))}
               />
             ))}
           </div>

@@ -1,19 +1,21 @@
 import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { updateQuantity, removeFromCart } from "../store/cartSlice";
 import "./Cart.css";
 
-const Cart = ({ cartItems = [], setCartItems }) => {
+const Cart = () => {
+  const cartItems = useSelector((state) => state.cart.items);
+  const dispatch = useDispatch();
+
   const updateQty = (id, delta) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item._id === id
-          ? { ...item, quantity: Math.max(1, item.quantity + delta) }
-          : item
-      )
-    );
+    const item = cartItems.find((item) => item._id === id);
+    if (item) {
+      dispatch(updateQuantity({ id, quantity: item.quantity + delta }));
+    }
   };
 
   const removeItem = (id) => {
-    setCartItems((prev) => prev.filter((item) => item._id !== id));
+    dispatch(removeFromCart(id));
   };
 
   const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);

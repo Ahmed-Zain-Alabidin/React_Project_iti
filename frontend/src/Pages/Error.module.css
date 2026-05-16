@@ -1,0 +1,50 @@
+.errorContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-bg-secondary, #f1f5f9);
+  text-align: center;
+  padding: var(--space-lg, 1.5rem);
+}
+
+.errorContent {
+  background: var(--color-bg-card, #ffffff);
+  padding: var(--space-3xl, 4rem) var(--space-2xl, 3rem);
+  border-radius: var(--border-radius-lg, 20px);
+  box-shadow: var(--shadow-lg);
+  max-width: 500px;
+  width: 100%;
+}
+
+.errorCode {
+  font-size: var(--font-size-5xl, 3.5rem);
+  color: var(--color-primary, #2563eb);
+  margin-bottom: var(--space-md, 1rem);
+  font-weight: 800;
+}
+
+.errorTitle {
+  font-size: var(--font-size-2xl, 1.5rem);
+  color: var(--color-text-primary, #1e293b);
+  margin-bottom: var(--space-sm, 0.5rem);
+}
+
+.errorMessage {
+  color: var(--color-text-secondary, #64748b);
+  margin-bottom: var(--space-xl, 2rem);
+}
+
+.backButton {
+  display: inline-block;
+  background-color: var(--color-primary, #2563eb);
+  color: white;
+  padding: var(--space-sm, 0.5rem) var(--space-lg, 1.5rem);
+  border-radius: var(--border-radius-md, 12px);
+  font-weight: 500;
+  transition: background-color var(--transition-fast, 0.2s);
+}
+
+.backButton:hover {
+  background-color: var(--color-primary-dark, #1d4ed8);
+}
