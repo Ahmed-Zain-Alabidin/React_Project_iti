@@ -5,8 +5,6 @@ import adminOnly from "../middleware/admin.js";
 
 const router = express.Router();
 
-// ── GET /api/products ─────────────────────────────
-// Public — list all products with optional filters
 router.get("/", async (req, res) => {
   try {
     const { category, search, minPrice, maxPrice, sort } = req.query;
@@ -43,8 +41,7 @@ router.get("/", async (req, res) => {
   }
 });
 
-// ── GET /api/products/:id ─────────────────────────
-// Public — get single product
+
 router.get("/:id", async (req, res) => {
   try {
     const product = await Product.findById(req.params.id);
@@ -57,8 +54,7 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// ── POST /api/products ────────────────────────────
-// Admin only — create product
+
 router.post("/", protect, adminOnly, async (req, res) => {
   try {
     const { name, description, price, category, quantity, image, size } = req.body;
@@ -84,8 +80,7 @@ router.post("/", protect, adminOnly, async (req, res) => {
   }
 });
 
-// ── PUT /api/products/:id ─────────────────────────
-// Admin only — update product
+
 router.put("/:id", protect, adminOnly, async (req, res) => {
   try {
     const product = await Product.findByIdAndUpdate(
@@ -108,8 +103,7 @@ router.put("/:id", protect, adminOnly, async (req, res) => {
   }
 });
 
-// ── DELETE /api/products/:id ──────────────────────
-// Admin only — delete product
+
 router.delete("/:id", protect, adminOnly, async (req, res) => {
   try {
     const product = await Product.findByIdAndDelete(req.params.id);

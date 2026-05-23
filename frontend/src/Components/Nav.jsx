@@ -2,10 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useState } from "react";
 import { useSelector } from "react-redux";
+import { selectCartItems } from "../store/cartSlice";
 import styles from "./Nav.module.css";
 
 const Nav = () => {
-  const cartItems = useSelector((state) => state.cart.items);
+  const cartItems = useSelector(selectCartItems);
   const cartCount = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const { isAuthenticated, user, logout } = useAuth();
   const navigate = useNavigate();
@@ -63,7 +64,10 @@ const Nav = () => {
             id="nav-cart"
             onClick={() => setMenuOpen(false)}
           >
-            🛒{cartCount > 0 && <span className={styles.cartBadge}>{cartCount}</span>}
+            🛒
+            {cartCount > 0 && (
+              <span className={styles.cartBadge}>{cartCount}</span>
+            )}
           </Link>
 
           {isAuthenticated ? (

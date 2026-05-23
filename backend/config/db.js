@@ -5,7 +5,6 @@ const LOCAL_MONGO = "mongodb://localhost:27017/ReactProject";
 const connectDB = async () => {
   try {
     const uri = process.env.MONGO_URI || LOCAL_MONGO;
-    // Always use local MongoDB — ignore Atlas URIs that require network access
     const resolvedUri = uri.startsWith("mongodb+srv") ? LOCAL_MONGO : uri;
     const conn = await mongoose.connect(resolvedUri);
     console.log(` MongoDB Connected: ${conn.connection.host}`);

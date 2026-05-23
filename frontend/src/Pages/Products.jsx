@@ -7,7 +7,15 @@ import ProductCard from "../Components/ProductCard";
 import ProductFormModal from "../Components/ProductFormModal";
 import "./Products.css";
 
-const CATEGORIES = ["All", "Clothes", "Makeup", "Phones", "Electronics", "Accessories", "Other"];
+const CATEGORIES = [
+  "All",
+  "Clothes",
+  "Makeup",
+  "Phones",
+  "Electronics",
+  "Accessories",
+  "Other",
+];
 const SORT_OPTIONS = [
   { value: "newest", label: "Newest" },
   { value: "price_asc", label: "Price: Low to High" },
@@ -74,7 +82,8 @@ const Products = () => {
   const handleSave = (savedProduct) => {
     setProducts((prev) => {
       const exists = prev.find((p) => p._id === savedProduct._id);
-      if (exists) return prev.map((p) => (p._id === savedProduct._id ? savedProduct : p));
+      if (exists)
+        return prev.map((p) => (p._id === savedProduct._id ? savedProduct : p));
       return [savedProduct, ...prev];
     });
     setModalOpen(false);
@@ -94,13 +103,14 @@ const Products = () => {
   return (
     <div className="products-page">
       <div className="container">
-
         {/* Page Header */}
         <div className="products-header">
           <div>
             <h1 className="products-title">Our Products</h1>
             <p className="products-subtitle">
-              {loading ? "Loading..." : `${products.length} product${products.length !== 1 ? "s" : ""} found`}
+              {loading
+                ? "Loading..."
+                : `${products.length} product${products.length !== 1 ? "s" : ""} found`}
             </p>
           </div>
           {isAdmin && (
@@ -122,7 +132,15 @@ const Products = () => {
               onChange={(e) => setSearchInput(e.target.value)}
             />
             {searchInput && (
-              <button className="search-clear" onClick={() => { setSearchInput(""); setSearch(""); }}>✕</button>
+              <button
+                className="search-clear"
+                onClick={() => {
+                  setSearchInput("");
+                  setSearch("");
+                }}
+              >
+                ✕
+              </button>
             )}
           </div>
 
@@ -133,7 +151,9 @@ const Products = () => {
               onChange={(e) => setSort(e.target.value)}
             >
               {SORT_OPTIONS.map((o) => (
-                <option key={o.value} value={o.value}>{o.label}</option>
+                <option key={o.value} value={o.value}>
+                  {o.label}
+                </option>
               ))}
             </select>
           </div>
@@ -191,7 +211,9 @@ const Products = () => {
                 isAdmin={isAdmin}
                 onEdit={openEdit}
                 onDelete={handleDelete}
-                onAddToCart={(product) => dispatch(addToCart(product))}
+                onAddToCart={(product) =>
+                  dispatch(addToCart({ productId: product._id, quantity: 1 }))
+                }
               />
             ))}
           </div>
@@ -203,7 +225,10 @@ const Products = () => {
         <ProductFormModal
           product={editProduct}
           onSave={handleSave}
-          onClose={() => { setModalOpen(false); setEditProduct(null); }}
+          onClose={() => {
+            setModalOpen(false);
+            setEditProduct(null);
+          }}
         />
       )}
     </div>

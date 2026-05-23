@@ -1,9 +1,12 @@
+import { useAuth } from "../context/AuthContext";
 import styles from "./ProductCard.module.css";
 
 const PLACEHOLDER = "https://placehold.co/400x300?text=No+Image";
 
 const ProductCard = ({ product, isAdmin, onEdit, onDelete, onAddToCart }) => {
-  const { _id, name, description, price, category, quantity, image, size } = product;
+  const { isAuthenticated } = useAuth();
+  const { _id, name, description, price, category, quantity, image, size } =
+    product;
 
   const imgSrc = image && image.trim() !== "" ? image : PLACEHOLDER;
 
@@ -15,7 +18,9 @@ const ProductCard = ({ product, isAdmin, onEdit, onDelete, onAddToCart }) => {
           src={imgSrc}
           alt={name}
           className={styles.image}
-          onError={(e) => { e.target.src = PLACEHOLDER; }}
+          onError={(e) => {
+            e.target.src = PLACEHOLDER;
+          }}
         />
         <span className={styles.categoryBadge}>{category}</span>
         {quantity === 0 && (
@@ -44,11 +49,15 @@ const ProductCard = ({ product, isAdmin, onEdit, onDelete, onAddToCart }) => {
             {!isAdmin && (
               <button
                 className={styles.btnCart}
-                disabled={quantity === 0}
+                disabled={quantity === 0 || !isAuthenticated}
                 onClick={() => onAddToCart && onAddToCart(product)}
                 aria-label={`Add ${name} to cart`}
               >
-                {quantity === 0 ? "Unavailable" : "Add to Cart"}
+                {quantity === 0
+                  ? "Unavailable"
+                  : !isAuthenticated
+                    ? "Sign in to add"
+                    : "Add to Cart"}
               </button>
             )}
 
